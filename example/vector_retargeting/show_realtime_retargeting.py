@@ -87,6 +87,8 @@ def start_retargeting(queue: multiprocessing.Queue, robot_dir: str, config_path:
         loader.scale = 1.4
     elif "svh" in robot_name:
         loader.scale = 1.5
+    elif "linkerhand_l20" in robot_name:
+        loader.scale = 1.2
 
     if "glb" not in robot_name:
         filepath = str(filepath).replace(".urdf", "_glb.urdf")
@@ -109,6 +111,8 @@ def start_retargeting(queue: multiprocessing.Queue, robot_dir: str, config_path:
         robot.set_pose(sapien.Pose([0, 0, -0.15]))
     elif "svh" in robot_name:
         robot.set_pose(sapien.Pose([0, 0, -0.13]))
+    elif "linkerhand_l20" in robot_name:
+        robot.set_pose(sapien.Pose([0, 0, -0.12]))
 
     # Different robot loader may have different orders for joints
     sapien_joint_names = [joint.get_name() for joint in robot.get_active_joints()]
@@ -147,9 +151,13 @@ def start_retargeting(queue: multiprocessing.Queue, robot_dir: str, config_path:
                 ref_value = joint_pos[task_indices, :] - joint_pos[origin_indices, :]
             qpos = retargeting.retarget(ref_value)
             robot.set_qpos(qpos[retargeting_to_sapien])
+            print(qpos)
 
         for _ in range(2):
             viewer.render()
+            print(retargeting.joint_names)
+
+    
 
 
 def produce_frame(queue: multiprocessing.Queue, camera_path: Optional[str] = None):
@@ -204,6 +212,7 @@ def main(
     time.sleep(5)
 
     print("done")
+    
 
 
 if __name__ == "__main__":
