@@ -125,6 +125,30 @@ The robot hand models in this repository are sourced directly from [dex-urdf](ht
 The robot kinematics in this repo are based on [pinocchio](https://github.com/stack-of-tasks/pinocchio).
 Examples use [SAPIEN](https://github.com/haosulab/SAPIEN) for rendering and visualization.
 
-The `PositionOptimizer` leverages methodologies from our earlier
+
+# Dex-Retargeting for LinkerHand L20
+
+This repository extends the original **dex-retargeting** project with support for the **LinkerHand L20** dexterous hand.
+
+## Features
+
+- ✅ Support for the LinkerHand L20 hand model
+- ✅ Retargeting from human hand tracking to the LinkerHand L20
+- ✅ Compatible with the original Dex-Retargeting pipeline
+- ✅ Validated on real LinkerHand L20 hardware
+
+## Hardware Validation
+
+The retargeting pipeline has been successfully tested on a **real LinkerHand L20** dexterous hand. Human hand motions are captured and retargeted to the L20 in real time, demonstrating stable and smooth finger motion mapping.
+
+<p align="center">
+  <img src="dex-linkerhandL20.gif" width="700" alt="Dex-Retargeting on LinkerHand L20">
+</p>
+
+## Acknowledgements
+
+This project is based on the excellent work of the original **Dex-Retargeting** project. We extend it by providing support for the LinkerHand L20 hardware platform and its corresponding retargeting configuration.
+
+If you find this repository useful, please also consider starring the original project.
 project, [From One Hand to Multiple Hands](https://yzqin.github.io/dex-teleop-imitation/).
 Additionally, the `DexPilotOptimizer`is crafted using insights from [DexPilot](https://sites.google.com/view/dex-pilot).
